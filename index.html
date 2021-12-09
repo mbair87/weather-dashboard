@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Stylesheets-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="./assets/css/styles.css" />
+
+    <title>Weather Dashboard</title>
+</head>
+<body>
+    <!--jumbotron  -->
+    <header>
+  <div class="jumbotron-fluid bg-primary text-white text-center">
+      <h1 class="display-3 ">Weather Dashboard</h1>
+    </div>
+</header>
+
+<main>
+    <div class="row">
+    <!--column 1 row 1 search form Section -->
+    <section class="col-3 m-1 bg-light" id="search-form">
+        <h3>Search For a City:</h3>
+        <form class="bg-light" id="city-form">
+            <input type="text" class="form-control" id="city-input" name="city" class="city"/>
+            <button id="city-search" type="submit" class="btn btn-primary">Search</button>
+        </form>
+
+        <!--city history column 1 row2-->
+        <div class="card">
+            <ul id="city-history" class="list-group list-group-flush">
+
+                <!--insert stored cities here-->
+
+            </ul>
+          </div>
+        </section>
+
+         <!-- column 2 row 1 weather conditions container -->
+      <div class="col-8 m-1">
+
+        <!-- row 1 column 2- current weather -->
+        <div class="row-12">
+          <div class="card">
+            <div id="current-weather" class="card-body">
+
+             <!--insert current weather conditions-->
+
+            </div>
+          </div>
+        </div>
+        <!-- row 2 column 2- forecast -->
+        
+        <div class="row-12">
+          <h3>5-Day Forecast:</h3>
+        </div>
+
+        <!-- row 3 column 2- days-->
+        <div id ="days" class="row">
+
+            <!--insert daily forecasts-->
+
+        </div>
+      </div>
+    </div>
+</div>
+   </div>
+
+ </main>   
+ <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+ <script src="./assets/js/script.js"></script>
+</body>
+</html>
