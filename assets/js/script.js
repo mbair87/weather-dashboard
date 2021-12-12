@@ -14,11 +14,12 @@ function getCities() {
     cities = savedCities;
   }
   generateCities();
+  saveCities();
 }
 
 //create html elements for cities
 function generateCities() {
-  
+  cityHistory.empty();
   // create list element for each city
   for (var i = 0; i < cities.length; i++) {
     var city = cities[i];
@@ -29,6 +30,13 @@ function generateCities() {
     li.attr("id", "list-city");
     cityHistory.prepend(li);
   }
+  //Get weather for the first saved city only
+  if (!city){
+    return
+} 
+else{
+    getWeather(city)
+};
 
 }
 
@@ -52,13 +60,14 @@ $("#city-search").on("click", function (event) {
   cities.push(city)
   console.log(city);
   saveCities();
+  getCities();
   getWeather(city);
 });
 
 //function to get coordinates and run other functions to display weather.
 function getWeather(cityName) {
   //get lat and lon coordinates for city
-  var geoUrl = "http://api.openweathermap.org/geo/1.0/direct?q=" + cityName + "&limit=1&appid=8251dbb2e3fad51d11bd788bdfe005a3";
+  var geoUrl = "https://api.openweathermap.org/geo/1.0/direct?q=" + cityName + "&limit=1&appid=8251dbb2e3fad51d11bd788bdfe005a3";
   $.get(geoUrl, function (response) {
     //add coordinates to API call
     var weatherUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + response[0].lat + "&lon=" + response[0].lon + "&units=imperial" + "&exclude=hourly,minutely,alerts&appid=8251dbb2e3fad51d11bd788bdfe005a3";
@@ -70,7 +79,7 @@ function getWeather(cityName) {
 };
 
 function displayWeather(data, cityName) {
-  var iconUrl = `http://openweathermap.org/img/wn/${data.current.weather[0].icon}@2x.png`
+  var iconUrl = `https://openweathermap.org/img/wn/${data.current.weather[0].icon}@2x.png`
   var currentWeather = $("#current-weather");
   //clear out previous weather data
   document.getElementById("current-weather").innerHTML = "";
@@ -121,7 +130,7 @@ var displayFiveDay = function (data, cityName) {
     var dayWeather = data.daily[i];
   //get icon for five-day weather
     var dailyIcon = data.daily[i].weather[0].icon;
-    var fiveDayIconUrl = `http://openweathermap.org/img/wn/${dailyIcon}.png`
+    var fiveDayIconUrl = `https://openweathermap.org/img/wn/${dailyIcon}.png`
     var fiveDayIcon = $("<img>").attr("src", fiveDayIconUrl);
     var dayDiv = $("<div>").attr("class", "col-3 m-3 bg-primary");
     //get five day date
