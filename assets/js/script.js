@@ -99,7 +99,7 @@ function displayWeather(data, cityName) {
   var currentHumidity = $("<p>").text("Humidity: " + data.current.humidity + "%");
   currentWeather.append(currentHumidity);
     //get current UV Index and display on screen
-  var currentUv = $("<p>").text("UV Index: " + data.current.uvi);
+  var currentUv = $("<span>").text("UV Index: " + data.current.uvi);
   //check level of UV index and assign CSS class for background color
   if (data.current.uvi <= 2) {
     currentUv.attr("class", "low")
